@@ -1,6 +1,6 @@
-# Personal Developer Portfolio
+# Portfolio
 
-A modern and responsive portfolio website built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS**. Designed to showcase my projects, technical skills, experience, and achievements with a clean UI and optimized performance.
+A modern and responsive portfolio website built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS**. Designed to showcase projects, technical skills, experience, and achievements with a clean UI and optimized performance.
 
 ## 🚀 Live Demo
 
@@ -29,12 +29,8 @@ A modern and responsive portfolio website built with **Next.js 16**, **React 19*
 ## ⚙️ Getting Started
 
 ```bash
-git clone https://github.com/your-username/portfolio.git
+git clone https://github.com/harshgtm/Portfolio.git
 cd portfolio
 npm install
 npm run dev
 ```
-
-## 👨‍💻 About
-
-Built and maintained by **Harsh Gautam** to showcase my work, skills, and professional journey.
