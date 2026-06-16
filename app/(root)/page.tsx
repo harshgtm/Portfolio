@@ -1,0 +1,177 @@
+import { AnimatedSection } from "@/components/common/animated-section";
+import { AnimatedText } from "@/components/common/animated-text";
+import { ClientPageWrapper } from "@/components/common/client-page-wrapper";
+import { Icons } from "@/components/common/icons";
+import ExperienceCard from "@/components/experience/experience-card";
+import Profile from "@/components/profile/profile";
+import ProjectCard from "@/components/projects/project-card";
+import SkillsCard from "@/components/skills/skills-card";
+import { Button } from "@/components/ui/button";
+import { experiences } from "@/config/experience";
+import { pagesConfig } from "@/config/pages";
+import { featuredProjects } from "@/config/projects";
+import { siteConfig } from "@/config/site";
+import { featuredSkills } from "@/config/skills";
+import { Metadata } from "next";
+import Link from "next/link";
+import Script from "next/script";
+
+export const metadata: Metadata = {
+  title: `${pagesConfig.home.metadata.title}`,
+  description:
+    "Harsh Gautam - Software Developer working at the intersection of technology and innovation. Explore my projects, experience, and contributions.",
+  alternates: {
+    canonical: siteConfig.url,
+  },
+};
+
+export default function IndexPage() {
+  // Structured data for personal portfolio
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: siteConfig.authorName,
+    url: siteConfig.url,
+    jobTitle: "Software Developer",
+    sameAs: [siteConfig.links.github],
+  };
+
+  // Structured data for website as a software application (template)
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Next.js Portfolio Template",
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Web",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    author: {
+      "@type": "Person",
+      name: siteConfig.authorName,
+      url: siteConfig.url,
+    },
+  };
+
+  return (
+    <ClientPageWrapper>
+      <Script
+        id="schema-person"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <Script
+        id="schema-software"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+      />
+
+      <Profile />
+      <AnimatedSection
+        direction="up"
+        className="container space-y-6 bg-muted py-10 my-14"
+        id="projects"
+      >
+        <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+          <AnimatedText
+            as="h2"
+            className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl"
+          >
+            {pagesConfig.projects.title}
+          </AnimatedText>
+          <AnimatedText
+            as="p"
+            delay={0.2}
+            className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
+          >
+            {pagesConfig.projects.description}
+          </AnimatedText>
+        </div>
+        <div className="w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full items-stretch">
+            {featuredProjects.map((exp, index) => (
+              <AnimatedSection
+                key={exp.id}
+                delay={0.1 * (index + 1)}
+                direction="up"
+                className="h-full w-full min-w-0"
+              >
+                <ProjectCard project={exp} />
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+        <AnimatedText delay={0.4} className="flex justify-center">
+          <Link href="/projects">
+            <Button variant={"outline"} className="rounded-xl">
+              View All &nbsp; <Icons.arrowRight className="mr-2 h-4 w-4" />
+            </Button>
+          </Link>
+        </AnimatedText>
+      </AnimatedSection>
+      <AnimatedSection
+        direction="up"
+        className="container space-y-6 py-10 my-14"
+        id="experience"
+      >
+        <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+          <AnimatedText
+            as="h2"
+            className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl"
+          >
+            {pagesConfig.experience.title}
+          </AnimatedText>
+          <AnimatedText
+            as="p"
+            delay={0.2}
+            className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
+          >
+            {pagesConfig.experience.description}
+          </AnimatedText>
+        </div>
+        <div className="mx-auto grid justify-center gap-4 md:w-full lg:grid-cols-2">
+          {experiences.slice(0, 3).map((experience, index) => (
+            <AnimatedSection
+              key={experience.id}
+              delay={0.1 * (index + 1)}
+              direction="up"
+            >
+              <ExperienceCard experience={experience} />
+            </AnimatedSection>
+          ))}
+        </div>
+      </AnimatedSection>
+      <AnimatedSection
+        direction="up"
+        className="container space-y-6 bg-muted py-10 my-14"
+        id="skills"
+      >
+        <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+          <AnimatedText
+            as="h2"
+            className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl"
+          >
+            {pagesConfig.skills.title}
+          </AnimatedText>
+          <AnimatedText
+            as="p"
+            delay={0.2}
+            className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
+          >
+            {pagesConfig.skills.description}
+          </AnimatedText>
+        </div>
+        <SkillsCard skills={featuredSkills} />
+        <AnimatedText delay={0.4} className="flex justify-center">
+          <Link href="/skills">
+            <Button variant={"outline"} className="rounded-xl">
+              View All &nbsp;<Icons.arrowRight className="mr-2 h-4 w-4" />
+            </Button>
+          </Link>
+        </AnimatedText>
+      </AnimatedSection>
+    </ClientPageWrapper>
+  );
+}
