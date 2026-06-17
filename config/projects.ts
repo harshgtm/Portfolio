@@ -72,7 +72,7 @@ export const Projects: ProjectInterface[] = [
       "GenAI-powered business rule creation for Comviva's telecom product catalog platform, enabling users to generate compliant rules from natural language inputs.",
     websiteLink:
       "https://www.comviva.com/products-solutions/digitech/bluemarble-crm/",
-    techStack: ["React.js", "Redux", "Material UI", "Sass", "Jest", "Typescript"],
+    techStack: ["React.js", "Typescript", "Redux", "Material UI", "Sass", "Jest"],
     startDate: new Date("2025-02-01"),
     endDate: new Date("2025-07-01"),
     companyLogoImg: "/projects/comviva-bluemarble/logo.png",
@@ -137,7 +137,7 @@ export const Projects: ProjectInterface[] = [
     shortDescription:
       "Full-stack e-commerce platform for beauty and skincare products with dynamic order management, image optimization, and a comprehensive back-office admin panel.",
     websiteLink: "https://www.sephora.com",
-    techStack: ["React.js", "Next.js", "Node.js", "PostgreSQL", "Redux", "MongoDB", "Sass", "Typescript"],
+    techStack: ["React.js", "Next.js", "Node.js", "PostgreSQL", "Redux", "MongoDB", "Sass", "Typescript", "Bootstrap"],
     startDate: new Date("2022-01-01"),
     endDate: new Date("2022-12-01"),
     companyLogoImg: "/projects/sephora/logo.png",

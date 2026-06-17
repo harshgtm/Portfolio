@@ -11,7 +11,7 @@ export default function BullIcon(props: BullIconProps) {
       {...props}
     >
       <path
-        fill="#ffffff"
+        fill="currentColor"
         opacity="1.000000"
         stroke="none"
         d="
